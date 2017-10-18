@@ -1,0 +1,49 @@
+NAME="f27-backgrounds"
+VERSION=27.0.1
+RELEASE=1
+CATEGORY="X11"
+SUMMARY="Fedora 27 desktop wallpaper"
+DESCRIPTION="Default wallpaper for the Fedora 27 release, along with a
+collection of selected wallpapers contributed by the Fedora community."
+HOMEPAGE="https://fedoraproject.org/wiki/Design"
+SRC_URI="https://github.com/fedoradesign/backgrounds/releases/download/v${VERSION}/${NAME}-${VERSION}.tar.xz"
+SRC_DIR=${NAME}
+
+ARCH=noarch
+
+PKG_NAMES="${NAME} ${NAME}-extras" # ${NAME}-extras"
+f27_backgrounds_DOCS="Attribution CC-BY-SA-4.0"
+f27_backgrounds_CONTENTS="
+	usr/share/backgrounds/f27/default/
+	usr/share/backgrounds/xfce/f27.png
+	usr/share/gnome-background-properties/f27.xml
+	usr/share/mate-background-properties/f27.xml
+	usr/share/wallpapers/F27/
+"
+f27_backgrounds_animated_SUMMARY="Fedora 27 animated wallpapers"
+f27_backgrounds_animated_DOCS="Attribution CC-BY-SA-4.0"
+f27_backgrounds_animated_CONTENTS="
+	usr/share/backgrounds/f27/default-animated/
+	usr/share/gnome-background-properties/f27-animated.xml
+	usr/share/mate-background-properties/f27-animated.xml
+"
+f27_backgrounds_extras_SUMMARY="Fedora 27 extra wallpapers"
+f27_backgrounds_extras_DOCS="Attribution-Extras CC-BY-SA-4.0"
+f27_backgrounds_extras_CONTENTS="
+	usr/share/backgrounds/f27/extras/
+	usr/share/backgrounds/xfce/f27-*
+	usr/share/gnome-background-properties/f27-extras.xml
+	usr/share/mate-background-properties/f27-extras.xml
+	usr/share/wallpapers/F27_*/
+"
+
+src_compile() {
+	cd ${S}
+	cygmake
+}
+
+src_install() {
+	cd ${S}
+	cyginstall
+	mv ${D}/usr/share/{xfce4/backdrops,backgrounds/xfce}
+}
