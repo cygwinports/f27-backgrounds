@@ -11,7 +11,7 @@ SRC_DIR=${NAME}
 
 ARCH=noarch
 
-PKG_NAMES="${NAME} ${NAME}-extras" # ${NAME}-extras"
+PKG_NAMES="${NAME} ${NAME}-extras" # ${NAME}-animated"
 f27_backgrounds_DOCS="Attribution CC-BY-SA-4.0"
 f27_backgrounds_CONTENTS="
 	usr/share/backgrounds/f27/default/
